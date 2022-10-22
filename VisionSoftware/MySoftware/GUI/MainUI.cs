@@ -16,10 +16,10 @@ namespace MySoftware.GUI
         public MainUI()
         {
             InitializeComponent();
-            Form2 f2  = new Form2();
-            f2.Show();
+            Form2 f2 = new Form2();
+            f2.Show(dockPanel, DockState.DockLeft);
             Form1 f3 = new Form1();
-            f3.Show();
+            f3.Show(dockPanel, DockState.DockRight);
         }
     }
 }

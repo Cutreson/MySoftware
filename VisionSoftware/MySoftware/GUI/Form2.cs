@@ -11,7 +11,7 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace MySoftware.GUI
 {
-    public partial class Form2 : DockPanel
+    public partial class Form2 : DockContent
     {
         public Form2()
         {
