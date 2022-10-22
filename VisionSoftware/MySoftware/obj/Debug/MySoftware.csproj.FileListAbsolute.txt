@@ -1,0 +1,13 @@
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.AssemblyReference.cache
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.SuggestedBindingRedirects.cache
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.GUI.MainUI.resources
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.Properties.Resources.resources
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.GenerateResource.cache
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.CoreCompileInputs.cache
+D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\MySoftware.exe.config
+D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\MySoftware.exe
+D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\MySoftware.pdb
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.exe
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.pdb
+D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.CopyComplete

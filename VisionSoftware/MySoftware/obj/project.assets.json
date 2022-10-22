@@ -1,0 +1,120 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.5": {
+      "WeifenLuo.WinFormsUI.Docking/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
+        },
+        "runtime": {
+          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win": {
+      "WeifenLuo.WinFormsUI.Docking/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
+        },
+        "runtime": {
+          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win-x64": {
+      "WeifenLuo.WinFormsUI.Docking/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
+        },
+        "runtime": {
+          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.5/win-x86": {
+      "WeifenLuo.WinFormsUI.Docking/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
+        },
+        "runtime": {
+          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WeifenLuo.WinFormsUI.Docking/2.1.0": {
+      "sha512": "jpd15CVlqEJR+nvg9WZX+al/M9D5T6wpz4Xoi+bbNv94RUk9EmDFEiG29fb8eO1RPE422t01//ACS8WCF9ks5w==",
+      "type": "package",
+      "path": "weifenluo.winformsui.docking/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net20/WeifenLuo.WinFormsUI.Docking.dll",
+        "weifenluo.winformsui.docking.2.1.0.nupkg.sha512",
+        "weifenluo.winformsui.docking.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.5": [
+      "WeifenLuo.WinFormsUI.Docking >= 2.1.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\dinhh\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
+      "projectName": "MySoftware",
+      "projectPath": "D:\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
+      "packagesPath": "C:\\Users\\dinhh\\.nuget\\packages\\",
+      "outputPath": "D:\\MySoftware\\VisionSoftware\\MySoftware\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\dinhh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net45"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net45": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net45": {
+        "dependencies": {
+          "WeifenLuo.WinFormsUI.Docking": {
+            "target": "Package",
+            "version": "[2.1.0, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}
