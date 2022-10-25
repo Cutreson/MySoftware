@@ -17,5 +17,11 @@ namespace MySoftware.GUI
         {
             InitializeComponent();
         }
+
+        private void imageBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            imageBox.Text = string.Format("Width = {0}, Height = {1}, X = {2}, Y = {3}", imageBox.Image.Width,
+                imageBox.Image.Height, imageBox.PointToImage(e.Location).X, imageBox.PointToImage(e.Location).Y);
+        }
     }
 }

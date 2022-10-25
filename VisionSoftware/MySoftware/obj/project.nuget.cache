@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Th7WOpcgns42UDtaYZJ8/1iaG3HBCW4cSDVf7YEPEbjmvfaHUPLV8Fjo8Cc+H8cv/5cGypx+HDOOBubswBElpw==",
+  "dgSpecHash": "UN3LM4drlUzWqXF3dyszBSulZn3EXphMiT3YnP+vRYk8gS4XOl6E0XwppUOHM/y5HAIh0tuxCgXGT7b/vjxh5A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\AVATECH\\Downloads\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\AVATECH\\.nuget\\packages\\weifenluo.winformsui.docking\\2.1.0\\weifenluo.winformsui.docking.2.1.0.nupkg.sha512"
-  ],
+  "projectFilePath": "D:\\MySoftware\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

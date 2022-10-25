@@ -29,7 +29,25 @@ namespace MySoftware.GUI
         /// </summary>
         private void InitializeComponent()
         {
+            this.imageBox = new Cyotek.Windows.Forms.ImageBox();
             this.SuspendLayout();
+            // 
+            // imageBox
+            // 
+            this.imageBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
+            this.imageBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.imageBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imageBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imageBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.imageBox.GridDisplayMode = Cyotek.Windows.Forms.ImageBoxGridDisplayMode.None;
+            this.imageBox.Image = global::MySoftware.Properties.Resources.picture;
+            this.imageBox.Location = new System.Drawing.Point(0, 0);
+            this.imageBox.Name = "imageBox";
+            this.imageBox.Size = new System.Drawing.Size(600, 600);
+            this.imageBox.TabIndex = 0;
+            this.imageBox.Text = "Image Box";
+            this.imageBox.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.imageBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.imageBox_MouseMove);
             // 
             // MainView
             // 
@@ -37,16 +55,19 @@ namespace MySoftware.GUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(70)))));
             this.ClientSize = new System.Drawing.Size(600, 600);
+            this.Controls.Add(this.imageBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainView";
-            this.TabText = "MainView";
-            this.Text = "MainView";
+            this.TabText = "Main View";
+            this.Text = "Main View";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private Cyotek.Windows.Forms.ImageBox imageBox;
     }
 }

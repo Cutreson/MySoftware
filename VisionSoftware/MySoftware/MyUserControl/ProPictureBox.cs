@@ -63,6 +63,7 @@ public struct ProTransformation
 
 public class ProPictureBox : PictureBox
 {
+	private Point currPosition;
 	private Point? _clickedPoint;
 	private ProTransformation _transformation;
 	public ProTransformation Transformation
@@ -80,7 +81,7 @@ public class ProPictureBox : PictureBox
 
 	public ProPictureBox()
 	{
-		_transformation = new ProTransformation(new Point(100, 0), .5f);
+		_transformation = new ProTransformation(new Point(0, 0), 1.0f);
 		MouseDown += OnMouseDown;
 		MouseMove += OnMouseMove;
 		MouseUp += OnMouseUp;
@@ -133,6 +134,7 @@ public class ProPictureBox : PictureBox
 
 	private void OnMouseMove(object sender, MouseEventArgs e)
 	{
+		UpdateCoords(e.Location);
 		if (_clickedPoint == null)
 			return;
 		var p = _transformation.ConvertToIm((Size)e.Location);
@@ -141,6 +143,7 @@ public class ProPictureBox : PictureBox
 
 	private void OnMouseDown(object sender, MouseEventArgs e)
 	{
+		UpdateCoords(e.Location);
 		Focus();
 		_clickedPoint = _transformation.ConvertToIm(e.Location);
 	}
@@ -149,10 +152,21 @@ public class ProPictureBox : PictureBox
 	{
 		var imRect = Transformation.ConvertToIm(ClientRectangle);
 		e.Graphics.DrawImage(Image, ClientRectangle, imRect, GraphicsUnit.Pixel);
+		
 	}
 
 	public void DecideInitialTransformation()
 	{
 		Transformation = new ProTransformation(Point.Empty, int.MaxValue);
+	}
+	private void UpdateCoords(Point p)
+    {
+		currPosition.X = p.X - Transformation.Translation.X;
+		currPosition.Y = p.Y - Transformation.Translation.Y;
+	}
+	public Point GetPixelCoords()
+    {
+		return currPosition;
+
 	}
 }

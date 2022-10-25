@@ -1,94 +1,31 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.5": {
-      "WeifenLuo.WinFormsUI.Docking/2.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
-        },
-        "runtime": {
-          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.5/win": {
-      "WeifenLuo.WinFormsUI.Docking/2.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
-        },
-        "runtime": {
-          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.5/win-x64": {
-      "WeifenLuo.WinFormsUI.Docking/2.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
-        },
-        "runtime": {
-          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
-        }
-      }
-    },
-    ".NETFramework,Version=v4.5/win-x86": {
-      "WeifenLuo.WinFormsUI.Docking/2.1.0": {
-        "type": "package",
-        "compile": {
-          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
-        },
-        "runtime": {
-          "lib/net20/WeifenLuo.WinFormsUI.Docking.dll": {}
-        }
-      }
-    }
+    ".NETFramework,Version=v4.5": {},
+    ".NETFramework,Version=v4.5/win": {},
+    ".NETFramework,Version=v4.5/win-x64": {},
+    ".NETFramework,Version=v4.5/win-x86": {}
   },
-  "libraries": {
-    "WeifenLuo.WinFormsUI.Docking/2.1.0": {
-      "sha512": "jpd15CVlqEJR+nvg9WZX+al/M9D5T6wpz4Xoi+bbNv94RUk9EmDFEiG29fb8eO1RPE422t01//ACS8WCF9ks5w==",
-      "type": "package",
-      "path": "weifenluo.winformsui.docking/2.1.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/net20/WeifenLuo.WinFormsUI.Docking.dll",
-        "weifenluo.winformsui.docking.2.1.0.nupkg.sha512",
-        "weifenluo.winformsui.docking.nuspec"
-      ]
-    }
-  },
+  "libraries": {},
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.5": [
-      "WeifenLuo.WinFormsUI.Docking >= 2.1.0"
-    ]
+    ".NETFramework,Version=v4.5": []
   },
   "packageFolders": {
-    "C:\\Users\\AVATECH\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\dinhh\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AVATECH\\Downloads\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
+      "projectUniqueName": "D:\\MySoftware\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
       "projectName": "MySoftware",
-      "projectPath": "C:\\Users\\AVATECH\\Downloads\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
-      "packagesPath": "C:\\Users\\AVATECH\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AVATECH\\Downloads\\MySoftware\\VisionSoftware\\MySoftware\\obj\\",
+      "projectPath": "D:\\MySoftware\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
+      "packagesPath": "C:\\Users\\dinhh\\.nuget\\packages\\",
+      "outputPath": "D:\\MySoftware\\MySoftware\\VisionSoftware\\MySoftware\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\AVATECH\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\dinhh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net45"
@@ -104,14 +41,7 @@
       }
     },
     "frameworks": {
-      "net45": {
-        "dependencies": {
-          "WeifenLuo.WinFormsUI.Docking": {
-            "target": "Package",
-            "version": "[2.1.0, )"
-          }
-        }
-      }
+      "net45": {}
     },
     "runtimes": {
       "win": {
