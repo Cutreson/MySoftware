@@ -71,6 +71,12 @@
     <Compile Include="GUI\MainView.Designer.cs">
       <DependentUpon>MainView.cs</DependentUpon>
     </Compile>
+    <Compile Include="MyUserControl\PictureBoxPro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MyUserControl\PictureBoxPro.Designer.cs">
+      <DependentUpon>PictureBoxPro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProPictureBox.cs">

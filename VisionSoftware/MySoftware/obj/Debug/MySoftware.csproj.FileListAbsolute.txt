@@ -11,3 +11,16 @@ D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.pdb
 D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
 D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.CopyComplete
 D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.GUI.MainView.resources
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\bin\Debug\MySoftware.exe.config
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\bin\Debug\MySoftware.exe
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\bin\Debug\MySoftware.pdb
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.AssemblyReference.cache
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.GUI.MainUI.resources
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.GUI.MainView.resources
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.Properties.Resources.resources
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.GenerateResource.cache
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.CoreCompileInputs.cache
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.CopyComplete
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.exe
+C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.pdb

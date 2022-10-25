@@ -1,22 +1,28 @@
 {
   "format": 1,
   "restore": {
-    "D:\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj": {}
+    "C:\\Users\\AVATECH\\Downloads\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj": {}
   },
   "projects": {
-    "D:\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj": {
+    "C:\\Users\\AVATECH\\Downloads\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
+        "projectUniqueName": "C:\\Users\\AVATECH\\Downloads\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
         "projectName": "MySoftware",
-        "projectPath": "D:\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
-        "packagesPath": "C:\\Users\\dinhh\\.nuget\\packages\\",
-        "outputPath": "D:\\MySoftware\\VisionSoftware\\MySoftware\\obj\\",
+        "projectPath": "C:\\Users\\AVATECH\\Downloads\\MySoftware\\VisionSoftware\\MySoftware\\MySoftware.csproj",
+        "packagesPath": "C:\\Users\\AVATECH\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\AVATECH\\Downloads\\MySoftware\\VisionSoftware\\MySoftware\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        ],
         "configFilePaths": [
-          "C:\\Users\\dinhh\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\AVATECH\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net45"
