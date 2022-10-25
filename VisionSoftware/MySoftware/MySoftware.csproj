@@ -125,6 +125,7 @@
   <ItemGroup>
     <Content Include="Icon\icon.ico" />
     <Content Include="Icon\login.ico" />
+    <None Include="Resources\11.bmp" />
     <None Include="Resources\picture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

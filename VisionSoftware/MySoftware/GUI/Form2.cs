@@ -17,10 +17,5 @@ namespace MySoftware.GUI
         {
             InitializeComponent();
         }
-
-        private void imageBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            this.TabText = imageBox.PointToImage(e.Location).X.ToString();
-        }
     }
 }
