@@ -11,17 +11,11 @@ using WeifenLuo.WinFormsUI.Docking;
 
 namespace MySoftware.GUI
 {
-    public partial class MainUI : Form
+    public partial class MainView : DockContent
     {
-        public MainUI()
+        public MainView()
         {
             InitializeComponent();
-            Form2 f2 = new Form2();
-            f2.Show(dockPanel, DockState.DockLeft);
-            Form1 f3 = new Form1();
-            f3.Show(dockPanel, DockState.DockRight);
-            MainView mainView = new MainView();
-            mainView.Show(dockPanel);
         }
     }
 }
