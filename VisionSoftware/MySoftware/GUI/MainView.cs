@@ -36,9 +36,10 @@ namespace MySoftware.GUI
             if (open.ShowDialog() == DialogResult.OK)
             {
                 Bitmap bitmap = new Bitmap(open.FileName);
-                //StaticData.imgSrc = bitmap;
-                imageBox.Image = bitmap;
-                bitmap.Dispose();
+                StaticData.imgSrc = bitmap;
+                ShowImage();
+                //imageBox.Image = bitmap;
+                //bitmap.Dispose();
             }    
                    
         }

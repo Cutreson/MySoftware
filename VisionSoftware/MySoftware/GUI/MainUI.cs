@@ -32,17 +32,17 @@ namespace MySoftware.GUI
         }
         private void Init()
         {
-            //cameraLive = new CameraLive();
-            //cameraLive.Show(dockPanel, DockState.DockLeft); ;
+            cameraLive = new CameraLive();
+            cameraLive.Show(dockPanel, DockState.DockLeft); 
             mainView = new MainView();
             mainView.Show(dockPanel);
 
-            //cameraLive.OneShotClicked += OneShot_Clicked;
-            //cameraLive.ContinuousShotClicked += OneShot_Clicked;
+            cameraLive.OneShotClicked += OneShot_Clicked;
+            cameraLive.ContinuousShotClicked += OneShot_Clicked;
         }
         private void OneShot_Clicked(object sender, EventArgs e)
         { 
-            //mainView.ShowImage();
+            mainView.ShowImage();
         }
     }
 }
