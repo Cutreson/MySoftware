@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySoftware.Camera;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,8 +14,6 @@ namespace MySoftware.GUI
 {
     public partial class MainView : DockContent
     {
-        private Bitmap bitmap;
-        private Image imgSrc;
         public MainView()
         {
             InitializeComponent();
@@ -24,6 +23,11 @@ namespace MySoftware.GUI
         {
 
         }
+        public void ShowImage()
+        {
+            imageBox.Refresh();
+            imageBox.Image = StaticData.imgSrc;
+        }
         private void OpenImage()
         {
             OpenFileDialog open = new OpenFileDialog();
@@ -31,10 +35,12 @@ namespace MySoftware.GUI
             open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
             if (open.ShowDialog() == DialogResult.OK)
             {
-                bitmap = new Bitmap(open.FileName);
-                imgSrc = bitmap;
-                imageBox.Image = imgSrc;
-            }
+                Bitmap bitmap = new Bitmap(open.FileName);
+                //StaticData.imgSrc = bitmap;
+                imageBox.Image = bitmap;
+                bitmap.Dispose();
+            }    
+                   
         }
         private void imageBox_MouseMove(object sender, MouseEventArgs e)
         {

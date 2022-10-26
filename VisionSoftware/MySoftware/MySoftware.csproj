@@ -38,6 +38,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Library\.NET\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
     </Reference>
+    <Reference Include="PylonC.NET, Version=4.1.0.0, Culture=neutral, PublicKeyToken=a77e8471c5919d5a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Library\.NET\PylonC.Net\PylonC.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="PylonC.NETSupportLibrary">
+      <HintPath>..\..\..\..\Library\.NET\PylonC.NETSupportLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,6 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera\CameraLive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Camera\CameraLive.Designer.cs">
+      <DependentUpon>CameraLive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Camera\StaticData.cs" />
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +104,9 @@
     <Compile Include="MyUserControl\ProPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="Camera\CameraLive.resx">
+      <DependentUpon>CameraLive.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,5 +145,6 @@
     <None Include="Resources\11.bmp" />
     <None Include="Resources\picture.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

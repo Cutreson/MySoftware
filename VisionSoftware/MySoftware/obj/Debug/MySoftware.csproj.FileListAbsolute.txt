@@ -38,4 +38,8 @@ D:\MySoftware\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.C
 D:\MySoftware\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.CopyComplete
 D:\MySoftware\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.exe
 D:\MySoftware\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.pdb
+D:\MySoftware\MySoftware\VisionSoftware\MySoftware\bin\Debug\PylonC.NETSupportLibrary.dll
+D:\MySoftware\MySoftware\VisionSoftware\MySoftware\bin\Debug\PylonC.NET.dll
+D:\MySoftware\MySoftware\VisionSoftware\MySoftware\bin\Debug\PylonC.NET.xml
+D:\MySoftware\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.Camera.CameraLive.resources
 D:\MySoftware\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.AssemblyReference.cache

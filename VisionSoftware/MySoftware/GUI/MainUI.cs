@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySoftware.Camera;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,11 +14,13 @@ namespace MySoftware.GUI
 {
     public partial class MainUI : Form
     {
+        private MainView mainView;
+        private CameraLive cameraLive;
         public MainUI()
         {
             InitializeComponent();
-            Form2 f2 = new Form2();
-            f2.Show(dockPanel, DockState.DockLeft);
+            Init();
+            //////////////////////////
             Form2 f1 = new Form2();         
             f1.Show(dockPanel, DockState.DockLeftAutoHide);
             f1.Text = "Hide";
@@ -25,8 +28,21 @@ namespace MySoftware.GUI
             f1.BackColor = Color.Green;
             Form1 f3 = new Form1();
             f3.Show(dockPanel, DockState.DockRight);
-            MainView mainView = new MainView();
+            //////////////////////////
+        }
+        private void Init()
+        {
+            //cameraLive = new CameraLive();
+            //cameraLive.Show(dockPanel, DockState.DockLeft); ;
+            mainView = new MainView();
             mainView.Show(dockPanel);
+
+            //cameraLive.OneShotClicked += OneShot_Clicked;
+            //cameraLive.ContinuousShotClicked += OneShot_Clicked;
+        }
+        private void OneShot_Clicked(object sender, EventArgs e)
+        { 
+            //mainView.ShowImage();
         }
     }
 }
