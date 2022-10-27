@@ -1,4 +1,3 @@
-D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.AssemblyReference.cache
 D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.GUI.MainUI.resources
 D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.Properties.Resources.resources
 D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.GenerateResource.cache
@@ -8,7 +7,6 @@ D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\MySoftware.exe
 D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\MySoftware.pdb
 D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.exe
 D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.pdb
-D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\WeifenLuo.WinFormsUI.Docking.dll
 D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.CopyComplete
 D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.GUI.MainView.resources
 C:\Users\AVATECH\Downloads\MySoftware\VisionSoftware\MySoftware\bin\Debug\MySoftware.exe.config
@@ -43,3 +41,9 @@ D:\MySoftware\MySoftware\VisionSoftware\MySoftware\bin\Debug\PylonC.NET.dll
 D:\MySoftware\MySoftware\VisionSoftware\MySoftware\bin\Debug\PylonC.NET.xml
 D:\MySoftware\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.Camera.CameraLive.resources
 D:\MySoftware\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.AssemblyReference.cache
+D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\PylonC.NET.dll
+D:\MySoftware\VisionSoftware\MySoftware\bin\Debug\PylonC.NET.xml
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.exe.config
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.GUI.Form2.resources
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.csproj.AssemblyReference.cache
+D:\MySoftware\VisionSoftware\MySoftware\obj\Debug\MySoftware.Camera.CameraLive.resources

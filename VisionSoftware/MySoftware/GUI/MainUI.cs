@@ -37,12 +37,12 @@ namespace MySoftware.GUI
             mainView = new MainView();
             mainView.Show(dockPanel);
 
-            cameraLive.OneShotClicked += OneShot_Clicked;
-            cameraLive.ContinuousShotClicked += OneShot_Clicked;
+            cameraLive.ImageReadyEvent += CameraLive_ImageReadyEvent;
         }
-        private void OneShot_Clicked(object sender, EventArgs e)
-        { 
-            mainView.ShowImage();
+
+        private void CameraLive_ImageReadyEvent(object sender, ImageReadyEventArgs e)
+        {
+            mainView.ShowImage(e.ImgSrc);
         }
     }
 }

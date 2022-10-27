@@ -68,7 +68,7 @@
     <Compile Include="Camera\CameraLive.Designer.cs">
       <DependentUpon>CameraLive.cs</DependentUpon>
     </Compile>
-    <Compile Include="Camera\StaticData.cs" />
+    <Compile Include="Camera\ImageReadyEventArgs.cs" />
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

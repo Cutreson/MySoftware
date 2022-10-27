@@ -18,9 +18,25 @@ namespace MySoftware.Camera
         public ImageProvider m_imageProvider = new ImageProvider(); /* Create one image provider. */
         private Bitmap m_bitmap = null; /* The bitmap is used for displaying the image. */
 
-        public event EventHandler OneShotClicked;
-        public event EventHandler ContinuousShotClicked;
-
+        private event EventHandler<ImageReadyEventArgs> _ImageReadyEvent;
+        public event EventHandler<ImageReadyEventArgs> ImageReadyEvent
+        {
+            add 
+            {
+                _ImageReadyEvent += value;
+            }
+            remove
+            {
+                _ImageReadyEvent -= value;
+            }
+        }
+        public void OnImageReadyEvent(Image img)
+        { 
+            if(_ImageReadyEvent != null)
+            {
+                _ImageReadyEvent(this, new ImageReadyEventArgs(img));              
+            }
+        }
         /* Set up the controls and events to be used and update the device list. */
         public CameraLive()
         {
@@ -58,15 +74,12 @@ namespace MySoftware.Camera
         private void toolStripButtonOneShot_Click(object sender, EventArgs e)
         {
             OneShot(); /* Starts the grabbing of one image. */
-            //One Shot Event Handler
-            OneShotClicked?.Invoke(sender, e);
         }
 
         /* Handles the click on the continuous frame button. */
         private void toolStripButtonContinuousShot_Click(object sender, EventArgs e)
         {
             ContinuousShot(); /* Start the grabbing of images until grabbing is stopped. */
-            //ContinuousShotClicked?.Invoke(sender, e);
         }
 
         /* Handles the click on the stop frame acquisition button. */
@@ -177,6 +190,7 @@ namespace MySoftware.Camera
                     }
                     else /* A new bitmap is required. */
                     {
+                        if(m_bitmap != null) m_bitmap.Dispose();
                         BitmapFactory.CreateBitmap(out m_bitmap, image.Width, image.Height, image.Color);
                         BitmapFactory.UpdateBitmap(m_bitmap, image.Buffer, image.Width, image.Height, image.Color);
                         /* We have to dispose the bitmap after assigning the new one to the display control. */
@@ -188,14 +202,10 @@ namespace MySoftware.Camera
                         //    /* Dispose the bitmap. */
                         //    bitmap.Dispose();
                         //}
-                        Bitmap bitmap = (Bitmap)StaticData.imgSrc;                    
+
                         /* Provide the display control with the new bitmap. This action automatically updates the display. */
-                        StaticData.imgSrc = m_bitmap;
-                        if (bitmap != null)
-                        {
-                            /* Dispose the bitmap. */
-                            bitmap.Dispose();
-                        }
+                        OnImageReadyEvent(m_bitmap);
+                        
                     }
                     /* The processing of the image is done. Release the image buffer. */
                     m_imageProvider.ReleaseImage();

@@ -1,0 +1,7 @@
+D:\MySoftware\VisionSoftware\EventHandlerDemo\bin\Debug\EventHandlerDemo.exe.config
+D:\MySoftware\VisionSoftware\EventHandlerDemo\bin\Debug\EventHandlerDemo.exe
+D:\MySoftware\VisionSoftware\EventHandlerDemo\bin\Debug\EventHandlerDemo.pdb
+D:\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.csproj.CoreCompileInputs.cache
+D:\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.exe
+D:\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.pdb
+D:\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.csproj.AssemblyReference.cache

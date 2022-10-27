@@ -26,7 +26,11 @@ namespace MySoftware.GUI
         public void ShowImage()
         {
             imageBox.Refresh();
-            imageBox.Image = StaticData.imgSrc;
+            //imageBox.Image = StaticData.imgSrc;
+        }
+        public void ShowImage(Image img)
+        {
+            imageBox.Image = img;
         }
         private void OpenImage()
         {
@@ -36,7 +40,7 @@ namespace MySoftware.GUI
             if (open.ShowDialog() == DialogResult.OK)
             {
                 Bitmap bitmap = new Bitmap(open.FileName);
-                StaticData.imgSrc = bitmap;
+                //StaticData.imgSrc = bitmap;
                 ShowImage();
                 //imageBox.Image = bitmap;
                 //bitmap.Dispose();
