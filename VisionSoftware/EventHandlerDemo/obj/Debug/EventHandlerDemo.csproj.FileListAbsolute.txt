@@ -5,3 +5,10 @@ D:\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.csproj.
 D:\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.exe
 D:\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.pdb
 D:\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.csproj.AssemblyReference.cache
+D:\MySoftware\MySoftware\VisionSoftware\EventHandlerDemo\bin\Debug\EventHandlerDemo.exe.config
+D:\MySoftware\MySoftware\VisionSoftware\EventHandlerDemo\bin\Debug\EventHandlerDemo.exe
+D:\MySoftware\MySoftware\VisionSoftware\EventHandlerDemo\bin\Debug\EventHandlerDemo.pdb
+D:\MySoftware\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.csproj.AssemblyReference.cache
+D:\MySoftware\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.csproj.CoreCompileInputs.cache
+D:\MySoftware\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.exe
+D:\MySoftware\MySoftware\VisionSoftware\EventHandlerDemo\obj\Debug\EventHandlerDemo.pdb

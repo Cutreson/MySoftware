@@ -1,12 +1,7 @@
 ﻿using PylonC.NETSupportLibrary;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
@@ -21,7 +16,7 @@ namespace MySoftware.Camera
         private event EventHandler<ImageReadyEventArgs> _ImageReadyEvent;
         public event EventHandler<ImageReadyEventArgs> ImageReadyEvent
         {
-            add 
+            add
             {
                 _ImageReadyEvent += value;
             }
@@ -31,10 +26,10 @@ namespace MySoftware.Camera
             }
         }
         public void OnImageReadyEvent(Image img)
-        { 
-            if(_ImageReadyEvent != null)
+        {
+            if (_ImageReadyEvent != null)
             {
-                _ImageReadyEvent(this, new ImageReadyEventArgs(img));              
+                _ImageReadyEvent(this, new ImageReadyEventArgs(img));
             }
         }
         /* Set up the controls and events to be used and update the device list. */
@@ -190,7 +185,7 @@ namespace MySoftware.Camera
                     }
                     else /* A new bitmap is required. */
                     {
-                        if(m_bitmap != null) m_bitmap.Dispose();
+                        if (m_bitmap != null) m_bitmap.Dispose();
                         BitmapFactory.CreateBitmap(out m_bitmap, image.Width, image.Height, image.Color);
                         BitmapFactory.UpdateBitmap(m_bitmap, image.Buffer, image.Width, image.Height, image.Color);
                         /* We have to dispose the bitmap after assigning the new one to the display control. */
@@ -205,7 +200,7 @@ namespace MySoftware.Camera
 
                         /* Provide the display control with the new bitmap. This action automatically updates the display. */
                         OnImageReadyEvent(m_bitmap);
-                        
+
                     }
                     /* The processing of the image is done. Release the image buffer. */
                     m_imageProvider.ReleaseImage();
