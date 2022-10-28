@@ -67,6 +67,8 @@
       <DependentUpon>CameraLive.cs</DependentUpon>
     </Compile>
     <Compile Include="Camera\ImageReadyEventArgs.cs" />
+    <Compile Include="CSV\DataCSV.cs" />
+    <Compile Include="CSV\WriterCSV.cs" />
     <Compile Include="GUI\Form1.cs">
       <SubType>Form</SubType>
     </Compile>

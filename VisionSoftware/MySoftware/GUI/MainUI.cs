@@ -19,7 +19,7 @@ namespace MySoftware.GUI
             f1.Text = "Hide";
             f1.TabText = "Tab hide";
             f1.BackColor = Color.Green;
-            Form1 f3 = new Form1();
+            Form2 f3 = new Form2();
             f3.Show(dockPanel, DockState.DockRight);
             //////////////////////////
         }
