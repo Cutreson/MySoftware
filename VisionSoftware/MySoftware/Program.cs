@@ -1,5 +1,4 @@
 ﻿using MySoftware.GUI;
-using PylonC.NET;
 using System;
 using System.Windows.Forms;
 
@@ -13,24 +12,9 @@ namespace MySoftware
         [STAThread]
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MainUI());
-
-            Environment.SetEnvironmentVariable("PYLON_GIGE_HEARTBEAT", "300000" /*ms*/);
-            Pylon.Initialize();
-            try
-            {
-                Application.EnableVisualStyles();
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainUI());
-            }
-            catch
-            {
-                Pylon.Terminate();
-                throw;
-            }
-            Pylon.Terminate();
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new FrmMain());
         }
     }
 }

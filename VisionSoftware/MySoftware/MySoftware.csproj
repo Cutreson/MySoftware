@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>MySoftware</RootNamespace>
     <AssemblyName>MySoftware</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -34,18 +34,34 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Basler.Pylon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=e389355f398382ab, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Library\C#\Camera\Basler.Pylon\x86\Basler.Pylon.dll</HintPath>
+    </Reference>
+    <Reference Include="Crevis.VirtualFG40Library">
+      <HintPath>Dll\x64\Crevis\Crevis.VirtualFG40Library.dll</HintPath>
+    </Reference>
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>..\..\DllLibrary\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
     </Reference>
-    <Reference Include="PylonC.NET, Version=4.1.0.0, Culture=neutral, PublicKeyToken=a77e8471c5919d5a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DllLibrary\PylonC.NET.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>Dll\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="PylonC.NETSupportLibrary">
-      <HintPath>..\..\DllLibrary\PylonC.NETSupportLibrary.dll</HintPath>
+    <Reference Include="MvCameraControl.Net, Version=3.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\OpenCV_Alignment\HQ\Dll\MvCameraControl.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NeptuneClassLibWrap">
+      <HintPath>Dll\x64\IMI\NeptuneClassLibWrap.dll</HintPath>
+    </Reference>
+    <Reference Include="SQLitePCLRaw.core">
+      <HintPath>..\..\..\OpenCV_Alignment\packages\SQLitePCLRaw.core.2.0.2\lib\netstandard2.0\SQLitePCLRaw.core.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\OpenCV_Alignment\packages\System.Data.SQLite.Core.1.0.113.1\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,61 +76,100 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Camera\CameraLive.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Camera\CameraLive.Designer.cs">
-      <DependentUpon>CameraLive.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Camera\ImageReadyEventArgs.cs" />
-    <Compile Include="CSV\DataCSV.cs" />
-    <Compile Include="CSV\WriterCSV.cs" />
-    <Compile Include="GUI\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Form2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Form2.Designer.cs">
-      <DependentUpon>Form2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\MainUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\MainUI.Designer.cs">
-      <DependentUpon>MainUI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\MainView.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\MainView.Designer.cs">
-      <DependentUpon>MainView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyUserControl\PictureBoxPro.cs">
+    <Compile Include="Class\CamDevices\GigE_Basler.cs" />
+    <Compile Include="Class\CamDevices\GigE_Crivis.cs" />
+    <Compile Include="Class\CamDevices\GigE_Hikvision.cs" />
+    <Compile Include="Class\CamDevices\hGigE_Imi.cs" />
+    <Compile Include="Class\CamDevices\ICamDevice.cs" />
+    <Compile Include="Class\ClassCommon\hIni.cs" />
+    <Compile Include="Class\ClassCommon\hLogger.cs" />
+    <Compile Include="Class\ClassView\Display.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MyUserControl\PictureBoxPro.Designer.cs">
+    <Compile Include="Class\ClassView\Display.designer.cs">
+      <DependentUpon>Display.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class\Communication\cSLMP.cs" />
+    <Compile Include="Class\Communication\MxCom.cs" />
+    <Compile Include="Class\Communication\MXComponent.cs" />
+    <Compile Include="Class\Communication\PLC1eClient.cs" />
+    <Compile Include="Class\Communication\PLC3eClient.cs" />
+    <Compile Include="Class\Communication\PLC3eSupports.cs" />
+    <Compile Include="Class\Communication\TCP1EClient.cs" />
+    <Compile Include="Class\Communication\TCP4Client.cs" />
+    <Compile Include="Class\Communication\TCPIPClient.cs" />
+    <Compile Include="Class\Communication\TCPServer.cs" />
+    <Compile Include="Class\Enum\cConsts.cs" />
+    <Compile Include="Class\Enum\cEnums.cs" />
+    <Compile Include="Class\Global\cGlobFuncs.cs" />
+    <Compile Include="Class\Global\cGlobVar.cs" />
+    <Compile Include="Class\Global\cMessageBox.cs" />
+    <Compile Include="Class\Global\cSystemTypes.cs" />
+    <Compile Include="Class\hDelegate\hDelegate.cs" />
+    <Compile Include="Class\Image\cCamMain.cs" />
+    <Compile Include="Class\Save\cCommonData.cs" />
+    <Compile Include="Class\Save\cConfig.cs" />
+    <Compile Include="Class\Save\cDeviceSetting.cs" />
+    <Compile Include="Class\Save\cSQLite.cs" />
+    <Compile Include="Class\hTools\DateTime.cs" />
+    <Compile Include="Class\hTools\hCameraType.cs" />
+    <Compile Include="Class\hTools\hNotifycation.cs" />
+    <Compile Include="Class\hTools\InPutParamAttribute.cs" />
+    <Compile Include="Form\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmCameraSetting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmCameraSetting.Designer.cs">
+      <DependentUpon>FrmCameraSetting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\FrmView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\FrmView.Designer.cs">
+      <DependentUpon>FrmView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\PictureBoxPro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\PictureBoxPro.Designer.cs">
       <DependentUpon>PictureBoxPro.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MyUserControl\ProPictureBox.cs">
+    <Compile Include="UserControl\ProPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="Camera\CameraLive.resx">
-      <DependentUpon>CameraLive.cs</DependentUpon>
+    <EmbeddedResource Include="Class\ClassView\Display.resx">
+      <DependentUpon>Display.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Form2.resx">
+    <EmbeddedResource Include="Form\Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\MainUI.resx">
-      <DependentUpon>MainUI.cs</DependentUpon>
+    <EmbeddedResource Include="Form\FrmCameraSetting.resx">
+      <DependentUpon>FrmCameraSetting.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\MainView.resx">
-      <DependentUpon>MainView.cs</DependentUpon>
+    <EmbeddedResource Include="Form\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\FrmView.resx">
+      <DependentUpon>FrmView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -126,6 +181,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="ClassDiagram.cd" />
+    <None Include="Class\Communication\PLCCommandSettings.csv" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -145,6 +202,22 @@
     <None Include="Resources\11.bmp" />
     <None Include="Resources\picture.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Class\Project\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4">
+      <Version>4.6.0.20220608</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4.Extensions">
+      <Version>4.6.0.20220608</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MySoftware.cCamMain">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\Image\cCamMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MySoftware.cPropCompare">
+    <Position X="6.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAgAAEAAAAgAABQAAAgIAQEAAAA=</HashCode>
+      <FileName>Class\Image\cCamMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MySoftware.CamInfor">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEQgAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\Image\cCamMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MySoftware.cImage">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Class\Image\cCamMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MySoftware.cCameraSettings">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAACAAAAAAAAAAAAAAAAAACABAQAAAAAAEABACAA=</HashCode>
+      <FileName>Class\Image\cCamMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MySoftware.cComputerSettings">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="MySoftware.cComputerSettings.cSerial" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Class\Image\cCamMain.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAACAABAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Class\Image\cCamMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MySoftware.cCamImage">
+    <Position X="4" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>UQQAAEQIAZCAyABgITAAAIQEIAkDDBBAkCEAJABBQAE=</HashCode>
+      <FileName>Class\Image\cCamMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
