@@ -28,8 +28,9 @@ namespace MySoftware
         public FrmSettingCamera(cCamImage camImage =  null, string _ID = "")
         {
             InitializeComponent();
-            sourceImage = camImage;
-            sourceImageBka = camImage;
+            //sourceImage = camImage;
+            sourceImage = new cCamImage();
+            sourceImageBka = new cCamImage();
             ID = _ID;
         }
         List<string> Interfaces;

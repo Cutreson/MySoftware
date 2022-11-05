@@ -28,6 +28,9 @@ namespace MySoftware.Class.CamDevices
 		private int mBeforeGrabDelay;
 		public bool IsConnected()
 		{
+			//Son code
+			if (Cam == null) return false;
+			//
 			return Cam.IsConnected; 
 		}
 		public bool IsHwTrigger

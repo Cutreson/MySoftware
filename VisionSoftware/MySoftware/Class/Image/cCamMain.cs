@@ -24,7 +24,7 @@ namespace MySoftware
         //{
         //    Name = name;
 
-        //}    
+        //}
     }
     public class cPropCompare
     {
@@ -308,15 +308,15 @@ namespace MySoftware
                 {
                     CamDevice = MakeCamDevice();
                 }
-
-                if (GlobVar.DicCams != null &&
-                    GlobVar.DicCams.ContainsKey(CamName) &&
-                    GlobVar.DicCams[CamName].IsConnected)
-                {
-                    CamDevice = GlobVar.DicCams[CamName].CamDevice;
-                    //IsConnected = true;
-                    return true;
-                }
+                //Son code
+                //if (GlobVar.DicCams != null &&
+                //    GlobVar.DicCams.ContainsKey(CamName) &&
+                //    GlobVar.DicCams[CamName].IsConnected)
+                //{
+                //    CamDevice = GlobVar.DicCams[CamName].CamDevice;
+                //    //IsConnected = true;
+                //    return true;
+                //}
 
                 List<CamInfor> camInfors =   CamDevice.GetCamInfors();
                 int countDevice = camInfors.Count;
@@ -342,8 +342,9 @@ namespace MySoftware
                 //IsConnected = true;
                 if (GlobVar.DicCams == null)
                     GlobVar.DicCams = new Dictionary<string, cCamImage>();
-                if (!GlobVar.DicCams.ContainsKey(CamName))
-                    GlobVar.DicCams.Add(CamName, this);
+                //Son code
+                //if (!GlobVar.DicCams.ContainsKey(CamName))
+                //    GlobVar.DicCams.Add(CamName, this);
                 if (CamDevice.IsConnected())
                 {
                     return true;
@@ -354,7 +355,8 @@ namespace MySoftware
 
             catch (Exception ex)
             {
-                GlobFuncs.SaveLogFile(ex.ToString());
+                //Son code
+                //GlobFuncs.SaveLogFile(ex.ToString());
                 cMessageBox.Error(ex.ToString());
                 return false;
             }

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32819.101
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32901.82
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySoftware", "MySoftware\MySoftware.csproj", "{8454550D-D289-43EB-A2C7-E0998683BCA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestCam", "TestCam\TestCam.csproj", "{071B368A-5A46-4572-8EFE-A296EC6B568A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8454550D-D289-43EB-A2C7-E0998683BCA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8454550D-D289-43EB-A2C7-E0998683BCA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8454550D-D289-43EB-A2C7-E0998683BCA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{071B368A-5A46-4572-8EFE-A296EC6B568A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{071B368A-5A46-4572-8EFE-A296EC6B568A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{071B368A-5A46-4572-8EFE-A296EC6B568A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{071B368A-5A46-4572-8EFE-A296EC6B568A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
