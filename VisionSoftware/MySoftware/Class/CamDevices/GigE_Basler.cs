@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Basler.Pylon;
+using MySoftware.Class.Image;
+using OpenCvSharp;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Basler.Pylon;
-using MySoftware.Class.CamDevices;
-using OpenCvSharp;
 
 namespace MySoftware.Class.CamDevices
 {
-	public class GigE_Basler : ICamDevice, IDisposable
+	public class GigE_Basler : ICamDevice
 	{
 		private int CamIndex;
 		private Camera Cam;
@@ -20,19 +20,12 @@ namespace MySoftware.Class.CamDevices
 		private bool IsGrabSuccess = false;
 		private bool IsGrabFail = false;
 		private object mLock = new object();
-		private static List<ICameraInfo> Caminfolist;
-		private static List<ICamera> Camlist;
+		private static List<ICameraInfo> CamInfoList;
+		private static List<ICamera> CamList;
 		private Stopwatch stopWatch = new Stopwatch();
 		private static object _imgLock = new object();
 		private int mExposureTime;
 		private int mBeforeGrabDelay;
-		public bool IsConnected()
-		{
-			//Son code
-			if (Cam == null) return false;
-			//
-			return Cam.IsConnected; 
-		}
 		public bool IsHwTrigger
 		{
 			get
@@ -57,37 +50,45 @@ namespace MySoftware.Class.CamDevices
 		}
 		public int BeforeGrabDelay
 		{
-			get;
-			set;
+			get
+			{
+				return mBeforeGrabDelay;
+
+			}
+			set
+			{
+				this.mBeforeGrabDelay = value;
+			}
+		}
+		public bool IsConnected()
+		{
+			return Cam.IsConnected;
 		}
 		public GigE_Basler()
 		{
-			this.InitializeCamera();
+			this.Init();
 			Environment.SetEnvironmentVariable("PYLON_GIGE_HEARTBEAT", "500");
 		}
-		private void InitializeCamera()
+		private void Init()
 		{
-			bool flag = Camlist == null;
-			if (flag)
+			if (CamList == null)
 			{
-				Camlist = new List<ICamera>();
+				CamList = new List<ICamera>();
 			}
 			else
 			{
-				bool flag2 = Caminfolist == CameraFinder.Enumerate();
-				if (flag2)
+				if (CamInfoList == CameraFinder.Enumerate())
 				{
 					return;
 				}
-				foreach (ICamera current in Camlist)  
+				foreach (ICamera current in CamList)
 				{
 					current.Close();
 					current.Dispose();
 				}
-				Camlist.Clear();
+				CamList.Clear();
 			}
-			Caminfolist = CameraFinder.Enumerate();
-
+			CamInfoList = CameraFinder.Enumerate();
 		}
 		public void AcqusitionStart()
 		{
@@ -98,7 +99,6 @@ namespace MySoftware.Class.CamDevices
 				this.Cam.ExecuteSoftwareTrigger();
 			}
 		}
-
 		public void AcqusitionStop()
 		{
 			this.Cam.StreamGrabber.Stop();
@@ -119,20 +119,21 @@ namespace MySoftware.Class.CamDevices
 		}
 		public void CameraOpen(int camNumber, bool ev = true)
 		{
-			bool flag = camNumber < 0 || camNumber >= GigE_Basler.Caminfolist.Count;
+			bool flag = camNumber < 0 || camNumber >= GigE_Basler.CamInfoList.Count;
 			if (!flag)
 			{
 				this.CamIndex = camNumber;
-				int num = GigE_Basler.Camlist.FindIndex((ICamera ss) => GigE_Basler.Caminfolist[this.CamIndex]["SerialNumber"] == ss.CameraInfo["SerialNumber"]);
+				int num = GigE_Basler.CamList.FindIndex((ICamera ss)
+					=> GigE_Basler.CamInfoList[this.CamIndex]["SerialNumber"] == ss.CameraInfo["SerialNumber"]);
 				bool flag2 = num < 0;
 				if (flag2)
 				{
-					this.Cam = new Camera(GigE_Basler.Caminfolist[this.CamIndex]);
-					GigE_Basler.Camlist.Add(this.Cam);
+					this.Cam = new Camera(GigE_Basler.CamInfoList[this.CamIndex]);
+					GigE_Basler.CamList.Add(this.Cam);
 				}
 				else
 				{
-					this.Cam = (GigE_Basler.Camlist[num] as Camera);
+					this.Cam = GigE_Basler.CamList[num] as Camera;
 				}
 				if (ev)
 				{
@@ -142,30 +143,28 @@ namespace MySoftware.Class.CamDevices
 				object obj = this.mLock;
 				lock (obj)
 				{
-					bool flag4 = !this.Cam.IsOpen;
-					if (flag4)
+					bool flag3 = !this.Cam.IsOpen;
+					if (flag3)
 					{
 						this.Cam.Open();
 					}
-					bool flag5 = !this.Cam.IsConnected;
-					if (flag5)
+					bool flag4 = !this.Cam.IsConnected;
+					if (flag4)
 					{
 						this.Cam.Close();
 						Thread.Sleep(500);
 						this.Cam.Open();
-
-						//SvLogger.Log.Debug("camera re-connecting.. : " + this.Cam.ToString());
 					}
 				}
 			}
 		}
-		public string GetCameraSeiralNo()
+		public string GetCameraSerialNo()
 		{
-			return this.GetCameraSeiralNo(this.CamIndex);
+			return this.GetCameraSerialNo(this.CamIndex);
 		}
-		public string GetCameraSeiralNo(int camNumber)
+		public string GetCameraSerialNo(int camNumber)
 		{
-			bool flag = GigE_Basler.Caminfolist == null;
+			bool flag = GigE_Basler.CamInfoList == null;
 			string result;
 			if (flag)
 			{
@@ -173,27 +172,21 @@ namespace MySoftware.Class.CamDevices
 			}
 			else
 			{
-				bool flag2 = GigE_Basler.Caminfolist.Count <= camNumber;
+				bool flag2 = GigE_Basler.CamInfoList.Count <= camNumber;
 				if (flag2)
 				{
 					result = null;
 				}
 				else
 				{
-					result = GigE_Basler.Caminfolist[camNumber]["SerialNumber"];
+					result = GigE_Basler.CamInfoList[camNumber]["SerialNumber"];
 				}
 			}
 			return result;
 		}
-		private void Cam_ConnectionLost(object sender, EventArgs e)
-		{
-			this.Cam.StreamGrabber.Stop();
-			this.CameraClose();
-			Thread.Sleep(100);
-		}
 		public int GetConnectedCamCount()
 		{
-			return GigE_Basler.Caminfolist.Count;
+			return GigE_Basler.CamInfoList.Count;
 		}
 		private void OnImageGrabbed(object sender, ImageGrabbedEventArgs e)
 		{
@@ -206,22 +199,19 @@ namespace MySoftware.Class.CamDevices
 					bool grabSucceeded = grabResult.GrabSucceeded;
 					if (grabSucceeded)
 					{
-                        //this.Image = new Mat(grabResult.Height, grabResult.Width, MatType.CV_8UC1, (byte) grabResult.PixelData,0L);
-                        this.Image = new Mat();
-
-                        this.Image = new Mat(grabResult.Height, grabResult.Width, MatType.CV_8UC1, grabResult.PixelData as byte[], 0L);
+						this.Image = new Mat();
+						this.Image = new Mat(grabResult.Height, grabResult.Width, MatType.CV_8UC1, grabResult.PixelData as byte[], 0L);
 						this.IsGrabSuccess = true;
 					}
 					else
 					{
 						this.IsGrabFail = true;
-						//SvLogger.Log.Error("Basler Camera Grab Fail");
 					}
 				}
 			}
 			catch (Exception ex)
 			{
-				//SvLogger.Log.Error(ex.ToString());
+				Console.WriteLine(ex.Message);
 			}
 			finally
 			{
@@ -236,7 +226,7 @@ namespace MySoftware.Class.CamDevices
 		{
 			throw new NotImplementedException();
 		}
-		public float Getfps()
+		public float GetFps()
 		{
 			throw new NotImplementedException();
 		}
@@ -279,7 +269,7 @@ namespace MySoftware.Class.CamDevices
 					}
 					else
 					{
-						bool flag3 = Image != null ;
+						bool flag3 = Image != null;
 						if (flag3)
 						{
 							this.Image.Dispose();
@@ -328,14 +318,13 @@ namespace MySoftware.Class.CamDevices
 						result = null;
 						return result;
 					Block_13:
-						//SvLogger.Log.Error("Basler Camera Grab TimeOut.");
 						result = null;
 
 					}
 				}
 				catch (Exception ex)
 				{
-					//SvLogger.Log.Error(ex.ToString());
+					Console.WriteLine(ex.Message);
 					result = null;
 				}
 				finally
@@ -349,54 +338,54 @@ namespace MySoftware.Class.CamDevices
 		{
 			return true;
 		}
-        public string GetIPCam()
-        {
-            return GetIPCam(this.CamIndex);
-        }
-        public string GetIPCam(int camNumber)
-        {
-            bool flag = GigE_Basler.Caminfolist == null;
-            string result;
-            if (flag)
-            {
-                result = null;
-            }
-            else
-            {
-                bool flag2 = GigE_Basler.Caminfolist.Count <= camNumber;
-                if (flag2)
-                {
-                    result = null;
-                }
-                else
-                {
-                    result = GigE_Basler.Caminfolist[camNumber][CameraInfoKey.DeviceIpAddress];
-                }
-            }
-            return result;
-        }
-        public List<CamInfor> GetCamInfors()
-        {
-            List<CamInfor> camInfors = new List<CamInfor>();
-            foreach (var item in Caminfolist)
-            {
-                
-                try
-                {
-                    CamInfor camInfor = new CamInfor();
-                    if (item[CameraInfoKey.DeviceIpAddress]!=null)
-                    {
-                        camInfor.CamIP = item[CameraInfoKey.DeviceIpAddress];
-                    }
-                    camInfor.CamName = item[CameraInfoKey.SerialNumber];
-                    camInfors.Add(camInfor);
-                }
-                catch (Exception)
-                {
+		public string GetIPCam()
+		{
+			return GetIPCam(this.CamIndex);
+		}
+		public string GetIPCam(int camNumber)
+		{
+			bool flag = GigE_Basler.CamInfoList == null;
+			string result;
+			if (flag)
+			{
+				result = null;
+			}
+			else
+			{
+				bool flag2 = GigE_Basler.CamInfoList.Count <= camNumber;
+				if (flag2)
+				{
+					result = null;
+				}
+				else
+				{
+					result = GigE_Basler.CamInfoList[camNumber][CameraInfoKey.DeviceIpAddress];
+				}
+			}
+			return result;
+		}
+		public List<cCamInfor> GetCamInfors()
+		{
+			List<cCamInfor> camInfors = new List<cCamInfor>();
+			foreach (var item in CamInfoList)
+			{
 
-                }
-            }
-            return camInfors;
-        }
-    }
+				try
+				{
+					cCamInfor camInfor = new cCamInfor();
+					if (item[CameraInfoKey.DeviceIpAddress] != null)
+					{
+						camInfor.CamIP = item[CameraInfoKey.DeviceIpAddress];
+					}
+					camInfor.CamName = item[CameraInfoKey.SerialNumber];
+					camInfors.Add(camInfor);
+				}
+				catch (Exception)
+				{
+
+				}
+			}
+			return camInfors;
+		}
+	}
 }

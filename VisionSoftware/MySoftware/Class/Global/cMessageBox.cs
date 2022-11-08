@@ -1,5 +1,4 @@
-﻿using MySoftware;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,37 +7,6 @@ using System.Windows.Forms;
 
 namespace MySoftware
 {
-    public class cMessageContent
-    {
-        public static string War_InterfaceCanNotEmpty
-        {
-            get
-            {
-                return "Interface can't empty.";
-            }
-        }
-        public static string War_DeviceCanNotEmpty
-        {
-            get
-            {
-                return "Device can't empty.";
-            }
-        }
-        public static string Que_ClearListImage
-        {
-            get
-            {
-                return "Do you want clear image list.";
-            }
-        }
-        public static string Err_SLMPCannotConnect
-        {
-            get
-            {
-                return "SLMP can't connect.";
-            }
-        }
-    }
     public class cMessageBox
     {
         public static void Notification(string Content)

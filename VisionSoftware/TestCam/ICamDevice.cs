@@ -10,7 +10,7 @@ namespace TestCam
     public interface ICamDevice : IDisposable
     {
         bool IsHwTrigger { get; set; }
-        int Exposuretime { get; set; }
+        int ExposureTime { get; set; }
         int BeforeGrabDelay { get; set; }
         bool IsConnected();
         Mat QueryFrame();

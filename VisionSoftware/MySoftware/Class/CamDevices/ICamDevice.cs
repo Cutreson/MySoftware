@@ -1,43 +1,33 @@
-﻿using System;
+﻿using MySoftware.Class.Image;
+using OpenCvSharp;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using OpenCvSharp;
 
-namespace MySoftware
+namespace MySoftware.Class.CamDevices
 {
-	public interface ICamDevice : IDisposable
-	{
-		bool IsHwTrigger
-		{
-			get;
-			set;
-		}
-		int ExposureTime
-		{
-			get;
-			set;
-		}
-		int BeforeGrabDelay
-		{
-			get;
-			set;
-		}
-		Mat QueryFrame();
-		Mat GrabImage();
-		void CameraOpen(int camNumber, bool evt = true);
-		void CameraClose();
-		void AcqusitionStart();
-		void AcqusitionStop();
-		void ShowControlDialog();
-		float Getfps();
-		int GetConnectedCamCount();
-		string GetCameraSeiralNo();
-		string GetIPCam();
-        List<CamInfor> GetCamInfors();
-		string GetCameraSeiralNo(int camNumber);
-		bool FlushBuffer();
-		bool IsConnected();
-	}
+    public interface ICamDevice : IDisposable
+    {
+        bool IsHwTrigger { get; set; }
+        int ExposureTime { get; set; }
+        int BeforeGrabDelay { get; set; }
+        bool IsConnected();
+        Mat QueryFrame();
+        Mat GrabImage();
+        void CameraOpen(int camNumber, bool evt = true);
+        void CameraClose();
+        void AcqusitionStart();
+        void AcqusitionStop();
+        void ShowControlDialog();
+        float GetFps();
+        int GetConnectedCamCount();
+        string GetCameraSerialNo();
+        string GetCameraSerialNo(int camNumeber);
+        string GetIPCam();
+        List<cCamInfor> GetCamInfors();
+        bool FlushBuffer();
+
+    }
 }

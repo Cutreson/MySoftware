@@ -26,8 +26,6 @@ namespace MySoftware.GUI
 
         private void cameraSettingToolStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            FrmSettingCamera frmSettingCamera = new FrmSettingCamera(new cCamImage(), "21826969");
-            frmSettingCamera.Show();
         }
     }
 }
