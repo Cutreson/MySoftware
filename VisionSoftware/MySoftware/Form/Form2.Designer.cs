@@ -1,5 +1,5 @@
 ﻿
-namespace MySoftware.GUI
+namespace MySoftware
 {
     partial class Form2
     {

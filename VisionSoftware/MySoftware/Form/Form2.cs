@@ -1,7 +1,7 @@
 ﻿using System;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace MySoftware.GUI
+namespace MySoftware
 {
     public partial class Form2 : DockContent
     {

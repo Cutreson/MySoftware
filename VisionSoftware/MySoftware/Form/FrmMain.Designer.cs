@@ -1,4 +1,4 @@
-﻿namespace MySoftware.GUI
+﻿namespace MySoftware
 {
     partial class FrmMain
     {

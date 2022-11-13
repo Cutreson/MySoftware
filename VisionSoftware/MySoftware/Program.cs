@@ -1,4 +1,4 @@
-﻿using MySoftware.GUI;
+﻿using MySoftware;
 using System;
 using System.Windows.Forms;
 

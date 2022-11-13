@@ -1,4 +1,6 @@
-﻿using MySoftware.Class.CamDevices;
+﻿using Cyotek.Windows.Forms;
+using MySoftware.Class.CamDevices;
+using MySoftware.Class.View;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using System;
@@ -10,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MySoftware.Class.Image
+namespace MySoftware
 {
     public class cCamImage
     {
@@ -164,7 +166,7 @@ namespace MySoftware.Class.Image
 
             catch (Exception ex)
             {
-                GlobFuncs.SaveLogFile(ex.ToString());
+                //GlobFuncs.SaveLogFile(ex.ToString());
                 cMessageBox.Error(ex.ToString());
                 return false;
             }
@@ -231,9 +233,96 @@ namespace MySoftware.Class.Image
             else
                 return SnapImage_Computer(smartWindowControl, isSetPart, isPreview);
         }
+        public Bitmap SnapImage(ImageBox smartWindowControl = null, bool isSetPart = true, bool isPreview = false)
+        {
+            if (IsCamera)
+                return SnapImage_Camera(smartWindowControl, isSetPart, isPreview);
+            else
+                return SnapImage_Computer(smartWindowControl, isSetPart, isPreview);
+        }
         object mLock = new object();
 
         public Bitmap SnapImage_Camera(PictureBox smartWindowControl = null, bool isSetPart = true, bool isPreview = false)
+        {
+            OutputImage = null;
+
+            if (!IsConnected)
+                Connect();
+            int i = 0;
+            do
+            {
+                try
+                {
+                    //if (GrabberMode == cGrabberMode.ASync)
+                    //{
+                    //    //HOperatorSet.GrabImageAsync(out hObject, SourceImageSettings.CameraSettings.FrameGrabber,
+                    //    //        -1);
+                    //    for (int i1 = 0; i1 < NumBuffers; i1++)
+                    //        HOperatorSet.GrabImageAsync(out hObject, Framgraber,
+                    //            -1);
+                    //}
+                    //else
+                    //    HOperatorSet.GrabImage(out hObject, Framgraber);
+
+                    //OutputImage = new HImage(hObject);
+
+                    Mat image = CamDevice.GrabImage();                  
+                    if (image != null)
+                    {
+                        OutputImage = image.ToBitmap();
+                        if (smartWindowControl != null)
+                        {
+                            if (smartWindowControl.InvokeRequired)
+                            {
+                                smartWindowControl.Invoke((MethodInvoker)delegate
+                                {
+                                    lock (mLock)
+                                    {
+                                        //Bitmap hImage = OutputImage;
+                                        smartWindowControl.Image = OutputImage;
+
+                                    }
+                                });
+                            }
+                            else
+                            {
+                                lock (mLock)
+                                {
+                                    //Bitmap hImage = OutputImage;
+                                    smartWindowControl.Image = OutputImage;
+                                }
+                            }
+                        }
+
+                        //GlobFuncs.FillPictureBox(pbWindow, bitmap);
+                    }
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    OutputImage = null;
+                    continue;
+                }
+                finally
+                {
+                    i += 1;
+                }
+            } while (i <= 2);
+
+            if (OutputImage != null && smartWindowControl != null)
+            {
+                //if (isSetPart)
+                //GlobFuncs.SmartSetPart(OutputImage, smartWindowControl);
+
+                if (isPreview)
+                {
+                    StopLive();
+
+                }
+            }
+            return OutputImage;
+        }
+        public Bitmap SnapImage_Camera(ImageBox smartWindowControl = null, bool isSetPart = true, bool isPreview = false)
         {
             OutputImage = null;
 
@@ -343,6 +432,36 @@ namespace MySoftware.Class.Image
             }
             return OutputImage;
         }
+        public Bitmap SnapImage_Computer(ImageBox smartWindowControl = null, bool isSetPart = true, bool isPreview = false)
+        {
+            OutputImage = null;
+
+            if (CurrentImgIndex < 0 || (Images != null &&
+                CurrentImgIndex >= Images.Count))
+                CurrentImgIndex = 0;
+
+            if (Images != null &&
+                Images.Count > 0 &&
+                File.Exists(Images[CurrentImgIndex]))
+            {
+                //OutputImage = new HImage(Images[CurrentImgIndex]);
+                //CurrentImgIndex += 1;
+            }
+
+            if (OutputImage != null && smartWindowControl != null)
+            {
+                //if (isSetPart)
+                //    GlobFuncs.SmartSetPart(OutputImage, smartWindowControl);
+
+                if (isPreview)
+                {
+                    //smartWindowControl.HalconWindow.ClearWindow();
+                    //GlobFuncs.SmartSetPart(OutputImage, smartWindowControl);
+                    //smartWindowControl.HalconWindow.DispObj(OutputImage);
+                }
+            }
+            return OutputImage;
+        }
         private void LiveProcess(PictureBox window)
         {
             if (!IsConnected)
@@ -368,8 +487,37 @@ namespace MySoftware.Class.Image
                 }
             }
         }
+        private void LiveProcess(ImageBox window)
+        {
+            if (!IsConnected)
+                Connect();
+            if (!IsConnected || window == null)
+                return;
+            IsLive = true;
 
+            SnapImage(window);
+
+            while (IsLive)
+            {
+                try
+                {
+                    if (GlobVar.LockEvents) continue;
+                    if (!IsLive)
+                        return;
+                    SnapImage(window);
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+        }
         public void Live(PictureBox window)
+        {
+            if (IsCamera)
+                Task.Factory.StartNew(() => LiveProcess(window));
+        }
+        public void Live(ImageBox window)
         {
             if (IsCamera)
                 Task.Factory.StartNew(() => LiveProcess(window));
@@ -471,7 +619,7 @@ namespace MySoftware.Class.Image
                 {
                     StopLive();
                     Mat matView = image.Clone();
-                    window.pbWindow.Image = matView.ToBitmap();
+                    window.pbWindow.Image = (Image)matView.ToBitmap();
                     matView.Dispose();
                 }
             }
@@ -501,7 +649,7 @@ namespace MySoftware.Class.Image
                 if (isPreview)
                 {
                     Mat matView = mat.Clone();
-                    window.pbWindow.Image = matView.ToBitmap();
+                    window.pbWindow.Image = (Image) matView.ToBitmap();
                 }
             }
             return mat;

@@ -3,22 +3,15 @@ using System.Drawing;
 using System.Windows.Forms;
 using WeifenLuo.WinFormsUI.Docking;
 
-namespace MySoftware.GUI
+namespace MySoftware
 {
     public partial class FrmView : DockContent
     {
-        public FrmView()
+        private cCamImage sourceImage;
+        public FrmView(cCamImage image = null)
         {
             InitializeComponent();
-            Init();
-        }
-        private void Init()
-        {
-
-        }
-        public void ShowImage(Image img)
-        {
-            imageBox.Image = img;
+            this.sourceImage = image;
         }
         private void OpenImage()
         {
@@ -28,26 +21,31 @@ namespace MySoftware.GUI
             if (open.ShowDialog() == DialogResult.OK)
             {
                 Bitmap bitmap = new Bitmap(open.FileName);
-                imageBox.Image = bitmap;
+                hWindow.pbWindow.Image = bitmap;
             }
 
         }
-        private void imageBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (imageBox.Image != null)
-            {
-                imageBox.Text = string.Format("Size : {0}x{1}, (X,Y) = ({2},{3})", imageBox.Image.Width,
-                imageBox.Image.Height, imageBox.PointToImage(e.Location).X, imageBox.PointToImage(e.Location).Y);
-            }
-            else
-            {
-                imageBox.Text = "No Image";
-            }
-        }
-
         private void openImageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenImage();
+        }
+        private void grabImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            sourceImage.SnapMat(hWindow, true, true);
+        }
+
+        private void liveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(!sourceImage.IsLive)
+            {
+                sourceImage.Live(hWindow.pbWindow);
+                this.contextMenu.Items[3].Text = "Stop Live";
+            }
+            else
+            {
+                sourceImage.StopLive();
+                this.contextMenu.Items[3].Text = "Live";
+            }
         }
     }
 }

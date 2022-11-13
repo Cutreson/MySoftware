@@ -1,4 +1,4 @@
-﻿using MySoftware.Class.Image;
+﻿using MySoftware.Class;
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;

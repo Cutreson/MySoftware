@@ -1,13 +1,17 @@
 ﻿using Basler.Pylon;
-using MySoftware.Class.Image;
+using MySoftware;
 using OpenCvSharp;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing.Imaging;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using static System.Resources.ResXFileRef;
+using OpenCvSharp.Extensions;
 
 namespace MySoftware.Class.CamDevices
 {
@@ -26,7 +30,8 @@ namespace MySoftware.Class.CamDevices
 		private static object _imgLock = new object();
 		private int mExposureTime;
 		private int mBeforeGrabDelay;
-		public bool IsHwTrigger
+        private PixelDataConverter converter = new PixelDataConverter();
+        public bool IsHwTrigger
 		{
 			get
 			{
@@ -62,7 +67,7 @@ namespace MySoftware.Class.CamDevices
 		}
 		public bool IsConnected()
 		{
-			return Cam.IsConnected;
+			return this.Cam.IsConnected;
 		}
 		public GigE_Basler()
 		{
@@ -71,6 +76,7 @@ namespace MySoftware.Class.CamDevices
 		}
 		private void Init()
 		{
+			this.Cam = new Camera();
 			if (CamList == null)
 			{
 				CamList = new List<ICamera>();
@@ -188,37 +194,101 @@ namespace MySoftware.Class.CamDevices
 		{
 			return GigE_Basler.CamInfoList.Count;
 		}
-		private void OnImageGrabbed(object sender, ImageGrabbedEventArgs e)
-		{
-			try
-			{
-				object imgLock = GigE_Basler._imgLock;
-				lock (imgLock)
-				{
-					IGrabResult grabResult = e.GrabResult;
-					bool grabSucceeded = grabResult.GrabSucceeded;
-					if (grabSucceeded)
-					{
-						this.Image = new Mat();
-						this.Image = new Mat(grabResult.Height, grabResult.Width, MatType.CV_8UC1, grabResult.PixelData as byte[], 0L);
+        //private void OnImageGrabbed(object sender, ImageGrabbedEventArgs e)
+        //{
+        //	try
+        //	{
+        //		object imgLock = GigE_Basler._imgLock;
+        //		lock (imgLock)
+        //		{
+        //			IGrabResult grabResult = e.GrabResult;
+        //			bool grabSucceeded = grabResult.GrabSucceeded;
+        //			if (true)
+        //			{
+        //				this.Image = new Mat();
+        //				this.Image = new Mat(grabResult.Height, grabResult.Width, MatType.CV_8UC1, grabResult.PixelData as byte[], 0L);
+        //				Cv2.ImShow("son", Image);
+        //				Cv2.WaitKey();
+        //				Cv2.DestroyAllWindows();
+        //				this.IsGrabSuccess = true;
+        //			}
+        //			else
+        //			{
+        //				this.IsGrabFail = true;
+        //			}
+        //		}
+        //	}
+        //	catch (Exception ex)
+        //	{
+        //		Console.WriteLine(ex.Message);
+        //	}
+        //	finally
+        //	{
+        //		e.DisposeGrabResultIfClone();
+        //	}
+        //}
+        private void OnImageGrabbed(object sender, ImageGrabbedEventArgs e)
+        {
+            //if (InvokeRequired)
+            //{
+            //    // If called from a different thread, we must use the Invoke method to marshal the call to the proper GUI thread.
+            //    // The grab result will be disposed after the event call. Clone the event arguments for marshaling to the GUI thread.
+            //    //BeginInvoke(new EventHandler<ImageGrabbedEventArgs>(OnImageGrabbed), sender, e.Clone());
+            //    return;
+            //}
+
+            try
+            {
+                // Acquire the image from the camera. Only show the latest image. The camera may acquire images faster than the images can be displayed.
+                // Get the grab result.
+                IGrabResult grabResult = e.GrabResult;
+
+                // Check if the image can be displayed.
+                if (grabResult.IsValid)
+                {
+                    // Reduce the number of displayed images to a reasonable amount if the camera is acquiring images very fast.
+                    if (!stopWatch.IsRunning || stopWatch.ElapsedMilliseconds > 33)
+                    {
+                        stopWatch.Restart();
+                        Bitmap bitmap = new Bitmap(grabResult.Width, grabResult.Height, PixelFormat.Format32bppRgb);
+                        // Lock the bits of the bitmap.
+                        BitmapData bmpData = bitmap.LockBits(new Rectangle(0, 0, bitmap.Width, bitmap.Height), ImageLockMode.ReadWrite, bitmap.PixelFormat);
+						// Place the pointer to the buffer of the bitmap.
+                        converter.OutputPixelFormat = PixelType.BGRA8packed;
+						IntPtr ptrBmp = bmpData.Scan0;
+                        converter.Convert(ptrBmp, bmpData.Stride * bitmap.Height, grabResult);
+                        bitmap.UnlockBits(bmpData);
+
+                        this.Image = new Mat();
+                        Image = bitmap.ToMat();
+						//Image.ImWrite(@"img.bmp");
+						//this.Image = new Mat(grabResult.Height, grabResult.Width, MatType.CV_8UC1, grabResult.PixelData as byte[], 0L);
 						this.IsGrabSuccess = true;
-					}
-					else
-					{
-						this.IsGrabFail = true;
-					}
-				}
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex.Message);
-			}
-			finally
-			{
-				e.DisposeGrabResultIfClone();
-			}
-		}
-		public Mat QueryFrame()
+
+                        // Assign a temporary variable to dispose the bitmap after assigning the new bitmap to the display control.
+
+                        //Bitmap bitmapOld = pictureBox.Image as Bitmap;
+                        //// Provide the display control with the new bitmap. This action automatically updates the display.
+                        //pictureBox.Image = bitmap;
+                        //if (bitmapOld != null)
+                        //{
+                        //    // Dispose the bitmap.
+                        //    bitmapOld.Dispose();
+                        //}
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                //ShowException(exception);
+            }
+            finally
+            {
+                // Dispose the grab result if needed for returning it to the grab loop.
+                e.DisposeGrabResultIfClone();
+            }
+        }
+        public Mat QueryFrame()
 		{
 			throw new NotImplementedException();
 		}
@@ -290,6 +360,7 @@ namespace MySoftware.Class.CamDevices
 							this.Cam.Parameters[PLCamera.ExposureTimeRaw].TrySetValue((long)this.mExposureTime);
 						}
 						this.Cam.Parameters[PLCamera.AcquisitionMode].SetValue(PLCamera.AcquisitionMode.SingleFrame);
+						Configuration.AcquireContinuous(Cam, null);
 						this.Cam.StreamGrabber.Start(1L, GrabStrategy.LatestImages, GrabLoop.ProvidedByStreamGrabber);
 						this.stopWatch.Reset();
 						this.stopWatch.Start();

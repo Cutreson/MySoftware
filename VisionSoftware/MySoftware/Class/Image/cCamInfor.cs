@@ -1,4 +1,4 @@
-﻿namespace MySoftware.Class.Image
+﻿namespace MySoftware
 {
     public class cCamInfor
     {
